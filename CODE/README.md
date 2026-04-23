@@ -54,13 +54,18 @@ nltk.download("wordnet")
 nltk.download("sentiwordnet")
 ```
 
+Please login on wandb before running the training codes:
+```bash
+wandb login
+```
+
 ## Fine-tuned Model Checkpoint Download
 
-Required files in `models/distilbert-finetuned/best_model/`:
+Required files in **`models/distilbert-finetuned/best_model/`**:
 `config.json`, `model.safetensors`, `tokenizer.json`, `tokenizer_config.json`,
 `special_tokens_map.json`, `vocab.txt`, `training_args.bin`
 
-Required files in `models/roberta-finetuned/best_model/`:
+Required files in **`models/roberta-finetuned/best_model/`**:
 `config.json`, `model.safetensors`, `tokenizer.json`, `tokenizer_config.json`,
 `special_tokens_map.json`, `vocab.txt`, `training_args.bin`, `merges.txt`
 
@@ -71,18 +76,37 @@ Download both model checkpoints from the link below and place the files into the
 ```
 https://drive.google.com/drive/folders/13V4ibSTlBUi7hmaRvE6TnD9R1wCGuUWb?usp=sharing
 ```
+This url shares the two models' checkpoint file.
 
-### Alternative: Git LFS
 
-The checkpoints are also tracked via Git LFS. After cloning, run:
 
-```bash
-git clone https://github.com/zkgao223/comp6713-sentiment-analysis.git
-cd comp6713-sentiment-analysis
-git lfs pull
+## Dataset Setup
+
+Please download the datasets from the following Google Drive link:
+https://drive.google.com/drive/folders/1ks8KV4R3NTLBmdEHYXp890r2QTBTuEJ_?usp=drive_link
+
+After downloading:
+
+1. Extract the downloaded files
+2. Place them into the following directories:
+
+```
+MISC/
+├── go_emotions/
+│   └── google-research-datasets___go_emotions/
+│       ├── dataset_info.json
+│       └── *.arrow
+└── imdb/
+    └── stanfordnlp___imdb/
+        ├── dataset_info.json
+        └── *.arrow
 ```
 
-Note: large files are not always downloaded automatically on clone, so `git lfs pull` may be required.
+Notes:
+- Remove '1.txt' file
+- The script will not run if the structure is incorrect
+- If `train.json`, `val.json`, and `test.json` already exist in the `MISC` directory, the script will skip dataset downloading and directly load these files instead of rebuilding the dataset.
+
 
 ## Usage
 
@@ -134,4 +158,33 @@ Three options available:
 
 ```bash
 python demo/app.py
+```
+
+## Important Requirement Before Running the Evaluation
+
+Before running `cross_domain_eval.py`, you must first **download all files from the `models` folder in Google Drive into the `MISC` folder**.
+
+Please make sure that:
+
+- **all contents from the Google Drive `models` folder are downloaded completely into `MISC/`;**
+- **none of the file names are changed;**
+- **the original file names must stay exactly the same. For example: MISC/distilbert-finetuned/best_model.**
+
+## Important Warning
+
+**Do not rename any files from the `models` folder.**
+
+The evaluation code depends on the original file names. If any file name is changed, the program may fail to load the model correctly.
+
+## How to Run the Evaluation Code
+
+When running the evaluation part of the project, please first **enter the `code` directory**, and then run the script in module form.
+
+Use the following command:
+
+```bash
+cd CODE
+python -m evaluation.metrics
+python -m evaluation.cross_domain_eval
+python -m evaluation.error_analysis
 ```

@@ -176,12 +176,11 @@ The evaluation code depends on the original file names. If any file name is chan
 
 ## How to Run the Evaluation Code
 
-When running the evaluation part of the project, please first **enter the `code` directory**, and then run the script in module form.
 
 Use the following command:
 
 ```bash
-cd CODE
+# Execute the following command once.
 python -m evaluation.metrics
 python -m evaluation.cross_domain_eval
 python -m evaluation.error_analysis

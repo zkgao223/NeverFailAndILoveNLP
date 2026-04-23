@@ -102,7 +102,6 @@ MISC/
 ```
 
 Notes:
-- Remove '1.txt' file
 - The script will not run if the structure is incorrect
 - If `train.json`, `val.json`, and `test.json` already exist in the `MISC` directory, the script will skip dataset downloading and directly load these files instead of rebuilding the dataset.
 

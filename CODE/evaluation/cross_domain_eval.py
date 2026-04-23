@@ -5,7 +5,7 @@ from pathlib import Path
 from evaluation.metrics import evaluate_model
 from models.finetuned_model import FinetunedPredictor
 
-MODEL_ROOT = Path(__file__).resolve().parent.parent
+# MODEL_ROOT = Path(__file__).resolve().parent.parent
 PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent
 OUTPUT_DIR = PROJECT_ROOT / "MISC"
 

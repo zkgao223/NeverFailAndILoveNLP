@@ -13,7 +13,7 @@ from data.clean import clean_text
 
 
 
-# convert multi-label to binary label and clean textt.
+# convert multi-label to binary label and clean textt..
 def process_goemotions(dataset):
     features = dataset["train"].features["labels"]
     id2label = {i: name for i, name in enumerate(features.feature.names)}

@@ -2,6 +2,7 @@ import csv
 import json
 from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 from evaluation.metrics import evaluate_model
 from models.finetuned_model import FinetunedPredictor
 

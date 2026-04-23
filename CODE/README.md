@@ -164,9 +164,9 @@ Before running `cross_domain_eval.py`, you must first **download all files from 
 
 Please make sure that:
 
-- **all contents from the Google Drive `models` folder are downloaded completely into `MISC/`;**
+- **all contents from the Google Drive `models` folder are downloaded completely into `models/`;**
 - **none of the file names are changed;**
-- **the original file names must stay exactly the same. For example: MISC/distilbert-finetuned/best_model.**
+- **the original file names must stay exactly the same. For example: models/distilbert-finetuned/best_model.**
 
 ## Important Warning
 

@@ -492,9 +492,12 @@ def save_json(path, data):
 
 
 def main():
-    train_path = Path("data/train.json")
-    val_path = Path("data/val.json")
-    test_path = Path("data/test.json")
+    project_root = Path(__file__).resolve().parents[2]
+    misc_dir = project_root / "MISC"
+
+    train_path = misc_dir / "train.json"
+    val_path = misc_dir / "val.json"
+    test_path = misc_dir / "test.json"
 
     train_data = load_json(train_path)
     val_data = load_json(val_path)
@@ -575,7 +578,7 @@ def main():
         ]
     )
 
-    output_dir = Path("data/analysis")
+    output_dir = misc_dir
     save_text(output_dir / "domain_analysis_report.txt", report)
 
     results = {

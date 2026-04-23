@@ -5,6 +5,8 @@
 import json
 from pathlib import Path
 
+
+
 from datasets import load_dataset
 from sklearn.model_selection import train_test_split
 
@@ -115,8 +117,10 @@ def save_report(path, text):
 
 
 
+
 def main():
-    output_dir = Path("data")
+    project_root = Path(__file__).resolve().parents[2]
+    output_dir = project_root / "MISC"
     output_dir.mkdir(parents=True, exist_ok=True)
 
     train_path = output_dir / "train.json"
@@ -128,17 +132,26 @@ def main():
         val_data = load_json(val_path)
         test_data = load_json(test_path)
     else:
-        cache_dir = Path("data/cache")
-        cache_dir.mkdir(parents=True, exist_ok=True)
+        cache_dir = output_dir
+
+        goemotions_dir = cache_dir / "go_emotions"
+        imdb_dir = cache_dir / "imdb"
+
+        if not goemotions_dir.exists() or not imdb_dir.exists():
+            raise FileNotFoundError(
+                "Please download the original datasets from Google Drive and place "
+              
+                "inside MISC/original_dataset before running this script."
+            )
 
         goemotions = load_dataset(
             "google-research-datasets/go_emotions",
-            cache_dir=str(cache_dir)
+            cache_dir=str(goemotions_dir)
         )
 
         imdb = load_dataset(
             "stanfordnlp/imdb",
-            cache_dir=str(cache_dir)
+            cache_dir=str(imdb_dir)
         )
 
         goemotions_processed = process_goemotions(goemotions)

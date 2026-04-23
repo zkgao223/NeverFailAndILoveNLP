@@ -76,7 +76,6 @@ Download both model checkpoints from the link below and place the files into the
 ```
 https://drive.google.com/drive/folders/13V4ibSTlBUi7hmaRvE6TnD9R1wCGuUWb?usp=sharing
 ```
-This url shares the two models' checkpoint file.
 
 
 

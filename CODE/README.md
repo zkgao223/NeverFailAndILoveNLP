@@ -5,10 +5,11 @@ Binary sentiment analysis comparing five models: SentiWordNet baseline, zero-sho
 ## Project Structure
 
 ```
-comp6713-sentiment-analysis/
+CODE/
 ├── data/
 │   ├── build_dataset.py          # Download and preprocess datasets
 │   ├── clean.py                  # Text cleaning
+│   ├── domain_analysis.py
 │   └── label_mapping.py          # GoEmotions to binary label mapping
 ├── models/
 │   ├── baseline.py               # SentiWordNet lexicon baseline
@@ -16,11 +17,19 @@ comp6713-sentiment-analysis/
 │   ├── pretrained_roberta.py     # Zero-shot RoBERTa (Twitter)
 │   ├── finetune_distilbert.py    # Fine-tune DistilBERT + W&B hyperparameter sweep
 │   ├── finetune_roberta.ipynb    # Fine-tune RoBERTa + W&B hyperparameter sweep
+│   ├── finetuned_model.py        # Shared model loader for fine-tuned checkpoints
 │   ├── run_predictions.py        # Batch inference on test set
-│   └── distilbert-finetuned/
-│       └── best_model/           # Fine-tuned DistilBERT checkpoint (see below)
+│   ├── distilbert-finetuned/
+│   │   └── best_model/           # Fine-tuned DistilBERT checkpoint (see below)
 │   └── roberta-finetuned/
 │       └── best_model/           # Fine-tuned RoBERTa checkpoint (see below)
+├── evaluation/
+│   ├── metrics.py                # Evaluation metrics utilities
+│   ├── cross_domain_eval.py      # Cross-domain evaluation
+│   └── error_analysis.py        # Error analysis
+├── pre-trained_model_analysis/
+│   ├── diff_analysis.py          # Difference analysis between model predictions
+│   └── evaluate_metrics.py      # Evaluate and visualise pre-trained model metrics
 ├── demo/
 │   ├── app.py                    # Gradio web interface
 │   └── predict.py                # CLI inference script

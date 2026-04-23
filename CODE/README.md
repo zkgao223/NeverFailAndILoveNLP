@@ -160,7 +160,7 @@ python demo/app.py
 
 ## Important Requirement Before Running the Evaluation
 
-Before running `cross_domain_eval.py`, you must first **download all files from the `models` folder in Google Drive into the `MISC` folder**.
+Before running `cross_domain_eval.py`, you must first **download all files from the `models` folder in Google Drive into the `models` folder**.
 
 Please make sure that:
 

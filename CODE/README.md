@@ -108,7 +108,7 @@ Notes:
 
 ## Usage
 
-**Prepare datasets** (downloads GoEmotions + IMDb automatically):
+**Prepare datasets** ( GoEmotions + IMDb ):
 
 ```bash
 python -m data.build_dataset

@@ -6,8 +6,6 @@ import json
 from pathlib import Path
 
 
-
-from datasets import load_dataset
 from sklearn.model_selection import train_test_split
 
 from data.label_mapping import convert_label
@@ -132,25 +130,26 @@ def main():
         val_data = load_json(val_path)
         test_data = load_json(test_path)
     else:
-        cache_dir = output_dir
+        from datasets import Dataset
 
-        goemotions_dir = cache_dir / "go_emotions"
-        imdb_dir = cache_dir / "imdb"
+        goemotions_dir = output_dir / "go_emotions" / "google-research-datasets___go_emotions"
+        imdb_dir = output_dir / "imdb" / "stanfordnlp___imdb"
 
-        if not goemotions_dir.exists() or not imdb_dir.exists():
+        goemotions_train_file = goemotions_dir / "go_emotions-train.arrow"
+        imdb_test_file = imdb_dir / "imdb-test.arrow"
+
+        if not goemotions_train_file.exists() or not imdb_test_file.exists():
             raise FileNotFoundError(
-                "Please download the original datasets from Google Drive and place "
+                "Required dataset files not found in MISC."
             )
 
-        goemotions = load_dataset(
-            "google-research-datasets/go_emotions",
-            cache_dir=str(goemotions_dir)
-        )
+        goemotions = {
+            "train": Dataset.from_file(str(goemotions_train_file))
+        }
 
-        imdb = load_dataset(
-            "stanfordnlp/imdb",
-            cache_dir=str(imdb_dir)
-        )
+        imdb = {
+            "test": Dataset.from_file(str(imdb_test_file))
+        }
 
         goemotions_processed = process_goemotions(goemotions)
         imdb_processed = process_imdb(imdb)

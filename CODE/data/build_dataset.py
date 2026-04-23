@@ -140,8 +140,6 @@ def main():
         if not goemotions_dir.exists() or not imdb_dir.exists():
             raise FileNotFoundError(
                 "Please download the original datasets from Google Drive and place "
-              
-                "inside MISC/original_dataset before running this script."
             )
 
         goemotions = load_dataset(

@@ -3,18 +3,18 @@ import random
 from pathlib import Path
 import argparse
 
-PROJECT_ROOT = Path(__file__).resolve().parent.parent
+PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent
 SAMPLE_SIZE = 30
 RANDOM_SEED = 42
 
 MODEL_TO_FILE = {
-    "distilbert": PROJECT_ROOT / "evaluation" / "distilbert_finetuned_predictions.json",
-    "roberta": PROJECT_ROOT / "evaluation" / "roberta_finetuned_predictions.json",
+    "distilbert": PROJECT_ROOT / "MISC" / "distilbert_finetuned_predictions.json",
+    "roberta": PROJECT_ROOT / "MISC" / "roberta_finetuned_predictions.json",
 }
 
 MODEL_TO_OUTPUT = {
-    "distilbert": PROJECT_ROOT / "evaluation" / "error_analysis_distilbert.json",
-    "roberta": PROJECT_ROOT / "evaluation" / "error_analysis_roberta.json",
+    "distilbert": PROJECT_ROOT / "MISC" / "error_analysis_distilbert.json",
+    "roberta": PROJECT_ROOT / "MISC" / "error_analysis_roberta.json",
 }
 
 

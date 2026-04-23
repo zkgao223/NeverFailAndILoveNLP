@@ -1,7 +1,7 @@
 # Run script settings
 import json
 import os
-DATA_PATH = "data/test.json"
+DATA_PATH = "../MISC/test.json"
 if not os.path.exists(DATA_PATH):
     raise FileNotFoundError(f"Test data does not exist, please check the path:{DATA_PATH}")
 
@@ -25,12 +25,12 @@ print("Running DistilBERT zero-shot model")
 distilbert_preds = predict_distilbert(test_data)
 
 # Save baseline results
-BASELINE_OUTPUT = "predictions/baseline_predictions.json"
+BASELINE_OUTPUT = "../MISC/baseline_predictions.json"
 with open(BASELINE_OUTPUT, "w", encoding="utf-8") as f:
     json.dump(baseline_preds, f, indent=2, ensure_ascii=False)
 
 # Save the results of the pre-trained model
-PRETRAINED_OUTPUT = "predictions/pretrained_predictions.json"
+PRETRAINED_OUTPUT = "../MISC/pretrained_predictions.json"
 with open(PRETRAINED_OUTPUT, "w", encoding="utf-8") as f:
     json.dump({
         "roberta": roberta_preds,

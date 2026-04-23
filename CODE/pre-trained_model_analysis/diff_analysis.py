@@ -2,8 +2,8 @@ import json
 import matplotlib.pyplot as plt
 
 # 1. Configuration File Paths 
-baseline_path = "predictions/baseline_predictions.json"
-pretrained_path = "predictions/pretrained_predictions.json" 
+baseline_path = "../MISC/baseline_predictions.json"
+pretrained_path = "../MISC/pretrained_predictions.json" 
 
 def load_data(file_path):
     with open(file_path, "r", encoding="utf-8") as f:
@@ -114,7 +114,7 @@ plt.pie(
 plt.title("Prediction Consistency: Baseline vs RoBERTa vs DistilBERT", pad=20, fontweight='bold')
 plt.axis('equal') 
 plt.tight_layout()
-plt.savefig("true_result_3way.png", dpi=300)
+plt.savefig("../MISC/true_result_3way.png", dpi=300)
 plt.close()
 
 print("\n  True 3-way model comparison visualization saved as true_result_3way.png")

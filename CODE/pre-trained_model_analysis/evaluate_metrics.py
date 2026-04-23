@@ -4,8 +4,8 @@ import numpy as np
 from sklearn.metrics import accuracy_score, precision_recall_fscore_support
 
 # 1. Configuration File Paths
-baseline_path = "predictions/baseline_predictions.json"
-pretrained_path = "predictions/pretrained_predictions.json"
+baseline_path = "../MISC/baseline_predictions.json"
+pretrained_path = "../MISC/pretrained_predictions.json"
 
 def load_data(file_path):
     with open(file_path, "r", encoding="utf-8") as f:
@@ -123,5 +123,5 @@ ax.grid(axis='y', linestyle='--', alpha=0.6)
 
 # Save chart
 fig.tight_layout()
-plt.savefig("final_metrics_comparison.png", dpi=300)
+plt.savefig("../MISC/final_metrics_comparison.png", dpi=300)
 print("\n  Final performance comparison chart saved as 'final_metrics_comparison.png'")

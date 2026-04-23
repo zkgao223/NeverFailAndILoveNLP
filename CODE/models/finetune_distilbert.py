@@ -129,9 +129,9 @@ def train_with_config(train_ds, val_ds, config, save_dir, debug=False):
 
 def train(debug=False):
     """Run a single training pass with fixed hyperparameters."""
-    base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-    train_path = os.path.join(base_dir, "data", "train.json")
-    val_path = os.path.join(base_dir, "data", "val.json")
+    base_dir = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+    train_path = os.path.join(base_dir, "MISC", "train.json")
+    val_path = os.path.join(base_dir, "MISC", "val.json")
     save_dir = os.path.join(base_dir, "models", "distilbert-finetuned", "best_model")
 
     wandb.init(
@@ -174,9 +174,9 @@ def run_sweep():
     Run a W&B grid search over learning_rate x num_train_epochs (4 runs).
     Results are logged to the W&B dashboard for comparison.
     """
-    base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-    train_path = os.path.join(base_dir, "data", "train.json")
-    val_path = os.path.join(base_dir, "data", "val.json")
+    base_dir = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+    train_path = os.path.join(base_dir, "MISC", "train.json")
+    val_path = os.path.join(base_dir, "MISC", "val.json")
 
     tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME)
     train_ds, val_ds = build_datasets(train_path, val_path, debug=False)

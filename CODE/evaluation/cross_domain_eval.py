@@ -5,7 +5,7 @@ from pathlib import Path
 from evaluation.metrics import evaluate_model
 from models.finetuned_model import FinetunedPredictor
 
-# MODEL_ROOT = Path(__file__).resolve().parent.parent
+MODEL_ROOT = Path(__file__).resolve().parent.parent
 PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent
 OUTPUT_DIR = PROJECT_ROOT / "MISC"
 
@@ -118,10 +118,10 @@ def main():
     test_path = PROJECT_ROOT / "MISC" / "test.json"
 
     distilbert_model_path = (
-        PROJECT_ROOT / "MISC" / "distilbert-finetuned" / "best_model"
+        MODEL_ROOT / "model" / "distilbert-finetuned" / "best_model"
     )
     roberta_model_path = (
-        PROJECT_ROOT / "MISC" / "roberta-finetuned" / "best_model"
+        MODEL_ROOT / "model" / "roberta-finetuned" / "best_model"
     )
 
     # Check all required inputs before running evaluation.

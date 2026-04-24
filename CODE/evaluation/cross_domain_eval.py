@@ -119,10 +119,10 @@ def main():
     test_path = PROJECT_ROOT / "MISC" / "test.json"
 
     distilbert_model_path = (
-        MODEL_ROOT / "model" / "distilbert-finetuned" / "best_model"
+        MODEL_ROOT / "models" / "distilbert-finetuned" / "best_model"
     )
     roberta_model_path = (
-        MODEL_ROOT / "model" / "roberta-finetuned" / "best_model"
+        MODEL_ROOT / "models" / "roberta-finetuned" / "best_model"
     )
 
     # Check all required inputs before running evaluation.
